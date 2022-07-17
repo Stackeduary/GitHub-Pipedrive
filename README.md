@@ -15,3 +15,13 @@ This application should also have a web endpoint where it shows the gists for th
 * Make sure your application provides good output, clear logging and is as clear as possible about what it's doing
 * README file with clear instructions on how to run the application on our local computers
 * Implement an endpoint that show all users that have been scanned
+
+
+# Steps Implemented:
+
+- set up server in Express
+- set up a few basic endpoints in `routes/api.js`
+- 
+
+### Commands:
+`npm start` to run nodemon and start the server
