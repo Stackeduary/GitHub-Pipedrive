@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
@@ -24,7 +25,7 @@ app.get('/', response => {
     response.send('Server is running.')
 })
 
-mongoose.connect('mongodb://localhost:27017/gistsdb',
+mongoose.connect(process.env.DATABASE_URL,
     {
         useNewUrlParser: true
     }
@@ -36,7 +37,6 @@ db.once('open', () => {
     console.log('Connected successfully')
 })
 
-// replace port with process.env.PORT if this server is deployed on a production host
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}.`)
 })
