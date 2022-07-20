@@ -1,18 +1,26 @@
-version: "3.9"
+# docker-compose.yml
+version: '3'
 services:
-  database:
-    image: postgres
+  app:
+    build: .
+    depends_on:
+      - postgres
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: github-pipedrive-api
-    volumes:
-      - ./data/postgres:/var/lib/postgresql/data
+      DATABASE_URL: postgres://user:pass@postgres:5432/db
+      NODE_ENV: development
+      PORT: 3000
     ports:
-      - "5432:5432"
-  nodejs:
-    image: node:8.11.1-alpine
+      - '3000:3000'
+    command: npm run dev
+    volumes:
+      - .:/app/
+      - /app/node_modules
+
+  postgres:
+    image: postgres:14.4-alpine
+    ports:
+      - '35432:5432'
     environment:
-      - NODE_ENV=production
-      - NODE_PORT=3000
-    
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: db

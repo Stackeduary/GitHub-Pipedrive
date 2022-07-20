@@ -5,9 +5,25 @@ const cors = require('cors')
 const api = require('./routes/api')
 // const { Router } = require('express')
 const mongoose = require('mongoose')
+const { ApolloServer, gql } = require('apollo-server-express')
+
+const typeDefinitions = gql`
+    type Query {
+        user: String
+    }
+`
+
+const resolvers = {
+    Query: {
+        user: () => `name is: ${name}`
+    }
+}
+
+const server = new ApolloServer({ typeDefinitions, resolvers })
 
 const app = express()
 const port = process.env.SERVER_PORT || 3000
+server.applyMiddleware({ app })
 
 app.use(bodyParser.json())
 app.use(cors())
@@ -38,5 +54,5 @@ db.once('open', () => {
 })
 
 app.listen(port, () => {
-    console.log(`Server is listening on port ${port}.`)
+    console.log(`Server is ready at http://localhost:${port}${server.graphqlPath}.`)
 })
