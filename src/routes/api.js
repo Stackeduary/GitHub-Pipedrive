@@ -1,5 +1,5 @@
-const express = require('express')
-const router = express.Router()
+// const express = require('express')
+// const router = express.Router()
 const https = require('https')
 const User = require('../models/user')
 const Gists = require('../models/gists')
