@@ -19,7 +19,7 @@ This application should also have a web endpoint where it shows the gists for th
 * Implement an endpoint that show all users that have been scanned
 
 
-# Steps Implemented:
+<!-- # Steps Implemented:
 
 - set up server in Express
 - set up two endpoints in `routes/api.js` to return a specific user's gists (`getAllGists`) and to return a specific gist (`getGist`)
@@ -33,4 +33,4 @@ This application should also have a web endpoint where it shows the gists for th
 ### Commands:
 - `npm start` to run nodemon and start the server
 - `./node_modules/.bin/eslint <filename>` to run ESLint
-
+ -->
